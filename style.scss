@@ -1,13 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap");
+
 body {
   margin: 0;
   font-family: "Rubik", sans-serif;
 }
-
 body * {
   box-sizing: border-box;
 }
-
 .main-login {
   width: 100vw;
   height: 100vh;
@@ -16,7 +15,6 @@ body * {
   justify-content: center;
   align-items: center;
 }
-
 .left-login {
   width: 50vw;
   height: 100vh;
@@ -25,16 +23,13 @@ body * {
   align-items: center;
   flex-direction: column;
 }
-
 .left-login > h1 {
   color: #77ffc0;
   font-size: 3vw;
 }
-
 .left-login-image {
   width: 35vw;
 }
-
 .right-login {
   width: 50vw;
   height: 100vh;
@@ -42,7 +37,6 @@ body * {
   justify-content: center;
   align-items: center;
 }
-
 .card-login {
   width: 60%;
   display: flex;
@@ -52,15 +46,13 @@ body * {
   padding: 30px 35px;
   background: #2f2841;
   border-radius: 20px;
-  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.337254902);
+  box-shadow: 0px 10px 40px #00000056;
 }
-
 .card-login > h1 {
   color: #00ff88;
   font-weight: 800;
   margin: 0;
 }
-
 .textfield {
   width: 100%;
   display: flex;
@@ -69,27 +61,24 @@ body * {
   justify-content: center;
   margin: 10px 0;
 }
-
 .textfield > input {
   width: 100%;
   border: none;
   border-radius: 10px;
   padding: 15px;
   background: #514869;
-  color: rgba(240, 255, 255, 0.8705882353);
+  color: #f0ffffde;
   font-size: 12pt;
-  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.337254902);
+  box-shadow: 0px 10px 40px #00000056;
   outline: none;
   box-sizing: border-box;
 }
-
 .textfield > label {
-  color: rgba(240, 255, 255, 0.8705882353);
+  color: #f0ffffde;
   margin-bottom: 10px;
 }
-
 .textfield > input::placeholder {
-  color: rgba(240, 255, 255, 0.5803921569);
+  color: #f0ffff94;
 }
 
 @media only screen and (max-width: 1100px) {
@@ -121,24 +110,33 @@ body * {
     width: 90%;
   }
 }
+
 .btn-login:hover,
 .btn-login:focus {
-  box-shadow: 0 0.5em 2.5em var(--hover);
+  box-shadow: 0 0.5em 0.5em +2em var(--hover);
   transform: translateY(-0.25em);
 }
 
-.btn-login {
-  --color: #00ff88;
-  --hover: #c800ff;
+$colors: (
+  btn-login: #00ff88,
+);
+
+@each $button, $color in $colors {
+  .#{$button} {
+    --color: #{$color};
+    --hover: #{adjust-hue($color, 135deg)};
+  }
 }
 
 button {
   color: var(--color);
   transition: 0.25s;
-}
-button:hover, button:focus {
-  border-color: var(--hover);
-  color: #fff;
+
+  &:hover,
+  &:focus {
+    border-color: var(--hover);
+    color: #fff;
+  }
 }
 
 button {
@@ -148,4 +146,4 @@ button {
   line-height: 1;
   margin: 0.5em;
   padding: 1em 2em;
-}/*# sourceMappingURL=style.css.map */
+}
